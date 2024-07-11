@@ -1,9 +1,13 @@
 package utils
 
-import "github.com/labstack/echo/v4"
+type Response struct {
+	Message string `json:"message"`
+}
 
-func JSONResponse(c echo.Context, message string) error {
-    return c.JSON(200, map[string]string{
-        "message": message,
-    })
+func NewErrorResponse(message string) Response {
+	return Response{Message: message}
+}
+
+func NewSuccessResponse(message string) Response {
+	return Response{Message: message}
 }
