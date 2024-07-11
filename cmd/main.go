@@ -1,21 +1,20 @@
 package main
 
 import (
-    "github.com/labstack/echo/v4"
-    "login-service/configs"
-    "login-service/controllers"
-    "login-service/middlewares"
+	"gihtub.com/ibnuqoyim/multi-auth/controllers"
+	"gihtub.com/ibnuqoyim/multi-auth/middlewares"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-    e := echo.New()
+	e := echo.New()
 
-    // Middleware
-    e.Use(middlewares.AuthMiddleware)
+	// Middleware
+	e.Use(middlewares.AuthMiddleware)
 
-    // Routes
-    e.POST("/api/register", controllers.Register)
-    e.POST("/api/login", controllers.Login)
+	// Routes
+	e.POST("/api/register", controllers.Register)
+	e.POST("/api/login", controllers.Login)
 
-    e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
